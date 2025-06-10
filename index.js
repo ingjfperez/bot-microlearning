@@ -11,5 +11,5 @@ app.use(express.static("public")); // si tienes CSS u otros archivos
 app.use("/dashboard", dashboardRoute);
 
 app.listen(3000, () => {
-  console.log("🚀 Dashboard corriendo en http://localhost:3000/dashboard");
+  console.log("🚀 Dashboard corriendo en http://localhost:3000/dashboard para localhost\n Para servidor en https://bot-microlearning.onrender.com/dashboard");
 });

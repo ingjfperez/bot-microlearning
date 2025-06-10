@@ -84,7 +84,7 @@ const manejarRespuestaEstudiante = async (bot, msg) => {
     await bot.sendMessage(chatId, `${icono} *Resultado:* ${feedback}`, { parse_mode: "Markdown" });
 
     // 6. Mensaje adicional
-    await bot.sendMessage(chatId, "📊 Respuesta registrada. Recibirás una nueva pregunta mañana a las 8:00 a.m.\n📈 Si quieres consultar tu progreso */miprogreso* 📈", { parse_mode: "Markdown" });
+    await bot.sendMessage(chatId, "📊 Respuesta registrada. Recibirás una nueva pregunta mañana a las 12:00 p.m.\n📈 Si quieres consultar tu progreso */miprogreso* 📈", { parse_mode: "Markdown" });
 
   } catch (error) {
     console.error("❌ Error al manejar la respuesta del estudiante:", error.message);
