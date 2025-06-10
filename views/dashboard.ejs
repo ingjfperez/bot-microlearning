@@ -18,6 +18,20 @@
       </div>
     </form>
 
+<form class="row g-3 mb-4" onsubmit="return redirigirGrupo(event)">
+  <div class="col-auto">
+    <select name="grupo" class="form-select" id="grupo">
+      <option disabled selected>Selecciona un grupo</option>
+      <% grupos.forEach(g => { %>
+        <option value="<%= g %>"><%= g %></option>
+      <% }) %>
+    </select>
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-success">📚 Filtrar por grupo</button>
+  </div>
+</form>
+
     <table class="table table-bordered table-striped">
       <thead class="table-dark">
         <tr>
@@ -47,14 +61,24 @@
   </div>
 
   <script>
-    function redirigir(e) {
-      e.preventDefault();
-      const codigo = e.target.elements.codigo.value.trim();
-      if (codigo) {
-        window.location.href = "/dashboard/estudiante/" + codigo;
-      }
-      return false;
+  function redirigir(e) {
+    e.preventDefault();
+    const codigo = e.target.elements.codigo.value.trim();
+    if (codigo) {
+      window.location.href = "/dashboard/estudiante/" + codigo;
     }
-  </script>
+    return false;
+  }
+
+  function redirigirGrupo(e) {
+    e.preventDefault();
+    const grupo = document.getElementById("grupo").value;
+    if (grupo && grupo !== "Selecciona un grupo") {
+      window.location.href = "/dashboard/grupo/" + grupo;
+    }
+    return false;
+  }
+</script>
+
 </body>
 </html>
