@@ -50,7 +50,7 @@ const enviarPreguntaDiaria = async () => {
 };
 
 // Programar envío todos los días a las 8:00 AM
-schedule.scheduleJob("00 20 * * *", () => {
+schedule.scheduleJob("10 20 * * *", () => {
   console.log("⏰ Ejecutando envío diario de preguntas...");
   enviarPreguntaDiaria();
 });
