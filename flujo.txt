@@ -1,52 +1,55 @@
-🟢 start (el bot inicia)
+🟢 START (Bot inicia)
     ↓
-🔐 ingresar clave
-    - El estudiante escribe una clave de acceso única
-    - Si es válida ➝ continúa
-    - Si no es válida ➝ rechazar
-    ↓
-👤 registrar estudiante
+🔐 INGRESAR CLAVE
+    → Usuario escribe clave
+        ↓
+        ¿Clave válida?
+        ├─ Sí → continuar
+        └─ No → rechazar acceso (fin)
+            ↓
+👤 REGISTRAR ESTUDIANTE
     - Guardar:
-        - telegram_id
-        - nombre (si se puede obtener con el bot)
-        - código (lo escribe el estudiante)
-        - grupo (lo escribe el estudiante)
-        - fecha_ingreso (actual)
+        • telegram_id
+        • nombre (si disponible)
+        • código (usuario lo escribe)
+        • grupo (usuario lo escribe)
+        • fecha_ingreso (actual)
     - Insertar en tabla `Estudiantes`
-    ↓
-📚 enviar material (opcional)
-    - Enviar un documento, video, texto o link
-    - Puedes usar `bot.sendMessage` o `bot.sendDocument`
-    ↓
-❓ enviar pregunta
-    - Seleccionar una pregunta aleatoria desde la base de datos
+        ↓
+📚 ENVIAR MATERIAL (opcional)
+    - Enviar documento/video/texto/link (sendMessage/sendDocument)
+        ↓
+❓ ENVIAR PREGUNTA
+    - Seleccionar pregunta aleatoria de la base de datos
     - Enviar con `bot.sendMessage`
-    ↓
-⌛ esperar respuesta
-    - Esperar que el estudiante escriba algo
-    - Guardar en tabla `Respuestas` con:
-        - código estudiante
-        - id de la pregunta
-        - texto de la respuesta
-        - fecha
-    ↓
-🧠 validar con IA (si es necesario)
-    - Llamar a DeepSeek o GPT para revisar si es correcta
-    - Buscar en tabla `RespuestasEvaluadas` si ya existe esa misma combinación (pregunta + respuesta)
-    - Si **existe**, usar el mismo feedback
-    - Si **no existe**, enviar a la IA y guardar en `RespuestasEvaluadas`
-    ↓
-💾 guardar resultado
-    - Actualizar la fila de `Respuestas` con:
-        - si fue correcta
-        - el id del feedback
-    ↓
-💬 enviar feedback al estudiante
-    - Enviar texto con:
-        - si fue correcta o no
-        - sugerencia o explicación si aplica
-    ↓
-✅ done
+        ↓
+⌛ ESPERAR RESPUESTA
+    - Esperar entrada del estudiante
+    - Guardar en tabla `Respuestas`:
+        • código estudiante
+        • id de pregunta
+        • texto de respuesta
+        • fecha
+        ↓
+🧠 VALIDAR CON IA (si es necesario)
+    - Consultar tabla `RespuestasEvaluadas` con:
+        • pregunta + respuesta
+    - ¿Ya existe?
+        ├─ Sí → usar mismo feedback
+        └─ No → enviar a IA (DeepSeek / GPT)
+                   → guardar en `RespuestasEvaluadas`
+        ↓
+💾 GUARDAR RESULTADO
+    - Actualizar fila en `Respuestas` con:
+        • si fue correcta
+        • id del feedback
+        ↓
+💬 ENVIAR FEEDBACK AL ESTUDIANTE
+    - Mensaje con:
+        • si fue correcta o no
+        • sugerencia o explicación
+        ↓
+✅ DONE
 
 npm install dotenv express ejs node-telegram-bot-api pg axios node-schedule @google/generative-ai
 
