@@ -145,6 +145,6 @@ Se analiza si la primera palabra es `"Verdadero"` y se guarda el resultado.
 
 ## 🧑‍💻 Autor
 
-**Jostin Novoa** – [github.com/JosAndNov](https://github.com/JosAndNov)
+**jfperez**
 
 ---
